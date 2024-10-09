@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ratings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+        form {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border: 2px solid #6e44ff; /* Subtle violet border */
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            color: #f0f0f0;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #f0f0f0;
+            font-size: 16px;
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        .radio-group label {
+            margin-right: 15px;
+            font-size: 16px;
+            color: #f0f0f0;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .movie-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .movie {
+            flex: 1 1 150px;
+            margin: 10px;
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 8px;
+            border: 1px solid #6e44ff; /* Violet border */
+            transition: border-color 0.3s ease;
+        }
+        .movie:hover {
+            border-color: #ffe600; /* Yellow hover effect */
+        }
+        .movie img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .slider-container {
+            margin-top: 10px;
+        }
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #555;
+            height: 6px;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background-color: #6e44ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #6e44ff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ffe600;
+            color: #333;
+        }
+        .result-container {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>We value your Feedback!</h1>
+
+    <form method="POST">
+        <label for="gender">Gender:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
+            <label><input type="radio" name="gender" value="Female" required> Female</label>
+        </div>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" min="1" style="width:fit-content;" required>
+
+        <label for="genre">Favorite Genre:</label>
+        <select name="genre" required>
+            <option value="" disabled selected>Select Genre</option>
+            <option value="Escapist">Escapist</option>
+            <option value="Serious">Serious</option>
+        </select>
+
+        <h2>Help us understand what you like best by rating a random pick of movies</h2>
+        <div class="movie-container">
+            <div class="movie">
+                <img src="movie1.jpg" alt="Movie 1">
+                <h3>Guardians of the Galaxy-<i>2014</i><br>(Escapist)</h3>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" name="movie1">
+                </div>
+            </div>
+            <div class="movie">
+                <img src="movie2.jpg" alt="Movie 2">
+                <h3>Jurassic Park-<i>1993</i><br>(Escapist)</h3>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" name="movie2">
+                </div>
+            </div>
+            <div class="movie">
+                <img src="movie3.jpg" alt="Movie 3">
+                <h3>A Beautiful Mind-<i>2001</i><br>(Serious)</h3>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" name="movie3">
+                </div>
+            </div>
+            <div class="movie">
+                <img src="movie4.jpg" alt="Movie 4">
+                <h3>Harry Potter and the Sorcerer's Stone-<i>2001</i><br>(Escapist)</h3>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" name="movie4">
+                </div>
+            </div>
+            <div class="movie">
+                <img src="movie5.jpg" alt="Movie 5">
+                <h3>The Shawshank Redemption-<i>1994</i><br>(Serious)</h3>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" name="movie5">
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit">
+                {% if average_rating %}
+                    <p><h3>Submit</h3><br>(Last Avg. Rating: <b>{{ average_rating }}</b>)</p>
+                {% else %}
+                        Submit
+                {% endif %}
+            </button>
+        </div>
+    </form>
+
+    <div class="result-container">
+        
+        {% if predicted_value %}
+            <p>Predicted Movie Enjoyment: {{ predicted_value|round(2) }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -33,25 +33,39 @@ model = Pipeline(steps=[
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 model.fit(X_train, y_train)
 
+# Route to display the form and take ratings input
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def movies():
+    average_rating = None
     predicted_value = None
+
     if request.method == 'POST':
+        # Get the movie ratings from the form
+        ratings = [
+            float(request.form['movie1']),
+            float(request.form['movie2']),
+            float(request.form['movie3']),
+            float(request.form['movie4']),
+            float(request.form['movie5'])
+        ]
+        # Calculate average rating
+        average_rating = sum(ratings) / len(ratings)
+
+        # Use this average rating as 'previous_rating' for the prediction
         gender = request.form['gender']
         age = int(request.form['age'])
         genre = request.form['genre']
-        previous_rating = float(request.form['previous_rating'])
 
-        # Make prediction
+        # Make prediction using average rating
         input_data = pd.DataFrame({
             'Gender': [gender],
             'Age': [age],
             'Genre': [genre],
-            'Previous Ratings': [previous_rating]
+            'Previous Ratings': [average_rating]
         })
         predicted_value = model.predict(input_data)[0]
 
-    return render_template('index.html', predicted_value=predicted_value)
+    return render_template('movies.html', predicted_value=predicted_value, average_rating=average_rating)
 
 if __name__ == '__main__':
     app.run(debug=True)
