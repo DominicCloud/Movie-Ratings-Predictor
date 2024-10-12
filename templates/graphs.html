@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Metrics Graphs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .graph-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border: 2px solid #6e44ff;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #ffe600;
+            margin-top: 20px;
+        }
+        p {
+            color: #f0f0f0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .description {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Performance Metrics Visualized</h1>
+
+    <div class="graph-container">
+        <h2>Bar Chart of Performance Metrics</h2>
+        <p class="description">
+            This bar chart displays the values for three key performance metrics: 
+            <strong>Mean Squared Error (MSE)</strong>, <strong>Root Mean Squared Error (RMSE)</strong>, 
+            and <strong>Mean Absolute Error (MAE)</strong>. 
+            In this chart:
+            <ul>
+                <li>The <strong>MSE</strong> value is <span style="color: #6e44ff;">0.0661</span>, represented in a violet bar, indicating the average of the squared errors.</li>
+                <li>The <strong>RMSE</strong> value is <span style="color: #ffe600;">0.2572</span>, shown as a yellow bar, which provides the error in the same units as the predictions.</li>
+                <li>The <strong>MAE</strong> value is <span style="color: #f06292;">0.2000</span>, in pink, representing the average absolute error between predictions and actual values.</li>
+            </ul>
+            A lower value for each metric indicates better model performance. RMSE and MAE values are close to each other, suggesting consistent error patterns.
+        </p>
+        <img src="{{ url_for('static', filename='performance_metrics_bar.png') }}" alt="Bar Chart of Performance Metrics">
+
+        <h2>Residuals Histogram</h2>
+        <p class="description">
+            This histogram shows the distribution of <strong>residuals</strong>, or the differences between the actual values and the predicted values. 
+            Ideally, residuals should be centered around zero, with minimal spread.
+            In this case:
+            <ul>
+                <li>The distribution is fairly symmetric around zero, which indicates that the model has low bias.</li>
+                <li>However, the slight spread of errors (visible in the histogram with a higher frequency of residuals between <span style="color: cyan;">-0.25 and 0.25</span>) suggests that there is still some room for improvement in minimizing prediction errors.</li>
+            </ul>
+            The histogram uses a dark violet color for the bars, giving a clear visualization of how the prediction errors are distributed.
+        </p>
+        <img src="{{ url_for('static', filename='residuals_histogram.png') }}" alt="Residuals Histogram">
+
+        <h2>Scatterplot of True vs Predicted Values</h2>
+        <p class="description">
+            This scatterplot compares the <strong>actual values</strong> with the <strong>predicted values</strong>. 
+            Ideally, all points would lie on the diagonal line, which would indicate perfect predictions.
+            In this plot:
+            <ul>
+                <li>Many of the points are close to the diagonal, suggesting that the model is performing reasonably well.</li>
+                <li>The scatter points are color-coded in shades of <span style="color: orange;">orange</span>, and there is some spread away from the diagonal, indicating slight prediction errors in some cases.</li>
+                <li>This visualization provides a quick way to assess the overall accuracy of the model, with smaller spreads indicating better performance.</li>
+            </ul>
+        </p>
+        <img src="{{ url_for('static', filename='true_vs_pred_scatter.png') }}" alt="True vs Predicted Values Scatterplot">
+    </div>
+
+</body>
+</html>

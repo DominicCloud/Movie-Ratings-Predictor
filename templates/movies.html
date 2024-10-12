@@ -187,20 +187,26 @@
         <div class="submit-container">
             <button type="submit">
                 {% if average_rating %}
-                    <p><h3>Submit</h3><br>(Last Avg. Rating: <b>{{ average_rating }}</b>)</p>
+                    <p><h3>Submit</h3><br>(Avg. Rating: <b>{{ average_rating }}</b>)</p>
                 {% else %}
-                        Submit
+                    Submit
                 {% endif %}
             </button>
+            <!-- Button to navigate to the /graphs route -->
+            <a href="/graphs">
+                <button type="button" style="margin-left: 20px;">View Graphs</button>
+            </a>
         </div>
     </form>
 
-    <div class="result-container">
-        
+    
         {% if predicted_value %}
-            <p>Predicted Movie Enjoyment: {{ predicted_value|round(2) }}</p>
-        {% endif %}
-    </div>
+        <div class="result-container" style="background-color: #2a2a2a; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);">
+            <p style="font-size: 24px; color: #ffe600;">Predicted Movie Enjoyment: <strong style="font-size: 36px; color: cyan;">{{ predicted_value|round(2) }}</strong></p>
+        </div>
+            {% endif %}
+    
+    
 
 </body>
 </html>
